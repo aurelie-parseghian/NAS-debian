@@ -202,6 +202,27 @@ sudo service apache2 restart
 ```
 Test d'accès avec authentification WebDAV.
 
+### Sauvegarde et Synchronisation des Fichiers
+
+## Synchronisation avec `rsync`
+Pour synchroniser les fichiers et s'assurer qu'ils sont bien stockés dans le RAID afin d'être sauvegardés, utilisez la commande suivante :
+
+```sh
+sudo rsync -av /chemin/source/ /chemin/destination/
+```
+
+### Explication des options :
+- `-a` : Mode archive (préserve les permissions, les liens symboliques, les métadonnées, etc.)
+- `-v` : Mode verbeux (affiche les fichiers en cours de copie)
+
+## Organisation des Fichiers
+Tous les documents de configuration sont répartis dans différents dossiers selon leur usage. Assurez-vous que les chemins sources et destinations sont bien définis avant d'exécuter la commande `rsync`.
+
+## Remarques
+- Vérifiez les droits d'accès avant de lancer la synchronisation.
+- Effectuez des tests sur un petit échantillon de fichiers avant d'exécuter la commande sur l'ensemble des données.
+- Automatisez la synchronisation avec un `cron job` si nécessaire.
+
 ---
 ## Conclusion
 Vous avez maintenant un NAS sécurisé avec **RAID 5**, **Samba**, **SFTP** et **WebDAV**. Ce guide couvre la configuration et la sécurisation pour garantir un accès distant fiable et sécurisé.
